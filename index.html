@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Easybank landing page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    * {
+      padding: 0px;
+      margin: 0px;
+      font-family: 'Outfit', sans-serif;
+      font-size: var(--fontSize);
+    }
+
+    :root {
+      --fontSize: 18px;
+      --darkBlue: hsl(233, 26%, 24%);
+      --limeGreen: hsl(136, 65%, 51%);
+      --brightCyan: hsl(192, 70%, 51%);
+      --grayishBlue: hsl(233, 8%, 62%);
+      --lightGrayishBlue: hsl(220, 16%, 96%);
+      --veryLightGray: hsl(0, 0%, 98%);
+      --White: hsl(0, 0%, 100%);
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    .navigation {
+      padding-left: 5%;
+      padding-right: 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navigationLinks {
+      width: 40%;
+    }
+
+    .navigationLinks button {
+      background-color: transparent;
+      border: none;
+      color: var(--grayishBlue);
+      /* margin-left:2%; */
+      border: 3px solid transparent;
+      padding: 3%;
+    }
+
+    .navigationLinks button:hover {
+      border-width: 3px;
+      border-style: solid;
+      border-image:
+        linear-gradient(to right,
+          var(--limeGreen),
+          var(--brightCyan)) 0 0 50% 0;
+    }
+
+    .navigationButton {
+      border: none;
+      color: var(--White);
+      background-image: linear-gradient(to right, var(--limeGreen), var(--brightCyan));
+      padding: 6px;
+      padding-left: 2%;
+      padding-right: 2%;
+      border-radius: 16px;
+    }
+
+    .navigationButton:hover {
+      filter: brightness(110%)
+    }
+
+    .landingWrapperText {
+      width: 50%;
+      padding-left: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .landingWrapperText p:nth-of-type(1) {
+      color: var(--darkBlue);
+      font-size: 4em;
+    }
+
+    .landingWrapperText p:nth-of-type(2) {
+      color: var(--grayishBlue);
+      margin-bottom: 4%;
+      margin-top: 4%;
+      width: 90%;
+    }
+
+    .landingWrapper button {
+      padding: 6px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .landingWrapper {
+      display: flex;
+      height: 80vh;
+    }
+
+    .landingWrapperImage {
+      width: 80%;
+      background-image: url("images\\bg-intro-desktop.svg");
+      background-position: 0% 70%;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .landingWrapperInnerImage {
+      width: 100%;
+      height: 150%;
+      background-image: url("images\\image-mockups.png");
+      background-position: 170% 150%;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0%;
+      z-index: 2;
+    }
+
+    .wrapperReasons {
+      background-color: var(--veryLightGray);
+      padding-right: 5%;
+      padding-left: 5%;
+      padding-bottom: 10%;
+    }
+
+    .wrapperReasons>p:nth-of-type(1) {
+      padding-top: 10%;
+    }
+
+    .title {
+      font-size: 3em;
+      color: var(--darkBlue)
+    }
+
+    .wrapperReasons>p:nth-of-type(2) {
+      color: var(--grayishBlue);
+      margin-top: 2%;
+      margin-bottom: 3%;
+      width: 50%;
+    }
+
+    .reasons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reason {
+      width: 20%;
+    }
+
+    .reason p:nth-of-type(1) {
+      margin-top: 6%;
+      margin-bottom: 4%;
+    }
+
+    .reason p:nth-of-type(2) {
+      color: var(--grayishBlue);
+    }
+
+    .wrapperArticles {
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 5%;
+    }
+
+    .wrapperArticles p:nth-of-type(1) {
+      margin-bottom: 5%;
+    }
+
+    .articles {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .article {
+      width: 23%;
+      height: 100%;
+    }
+
+    .article img {
+      width: 100%;
+      height: 250px;
+
+    }
+
+    .article p:nth-of-type(1) {
+      margin-top: 10%;
+      margin-bottom: 5%;
+      color: var(--grayishBlue)
+    }
+
+    .article p:nth-of-type(2):hover {
+      color: var(--limeGreen);
+      cursor: pointer;
+    }
+
+    .article p:nth-of-type(2) {
+      font-size: 1.3em;
+      margin-bottom: 3%;
+    }
+
+    .article p:nth-of-type(3) {
+      color: var(--grayishBlue);
+      width: 80%;
+    }
+
+    .footer {
+      background-color: var(--darkBlue);
+      margin-top: 10%;
+      padding-left: 5%;
+      padding-right: 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 3%;
+      padding-bottom: 4%;
+    }
+
+    .logos>img {
+      background-color: white;
+    }
+
+    .socials img {
+      margin-right: 10px;
+      margin-top: 25%;
+    }
+
+    .socials img:hover {
+      cursor: pointer;
+      filter: invert(67%) sepia(51%) saturate(2878%) hue-rotate(500deg) brightness(104%) contrast(97%);
+    }
+
+    .footerButtons {
+      display: flex;
+      width: 20%;
+      justify-content: space-between;
+      margin-left: -30%;
+
+    }
+
+    .right,
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+    }
+
+    .footerButtons button {
+      margin-top: 7px;
+      background-color: transparent;
+      border: none;
+      color: var(--lightGrayishBlue)
+    }
+
+    .footerButtons button:hover {
+      color: var(--limeGreen)
+    }
+
+    .footerButton {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footerButton button {
+      width: 65%;
+    }
+
+    .footerButton p {
+      color: var(--grayishBlue);
+      margin-top: 10%;
+    }
+
+    .openMenu {
+      display: none;
+    }
+
+    .closeMenu {
+      display: none;
+    }
+
+    .menu {
+      position: absolute;
+      margin-left: 8%;
+      margin-top: 20%;
+      width: 80%;
+      padding: 2%;
+      height: 40%;
+      background-color: white;
+      z-index: 20;
+      border-radius: 5px;
+      display: none;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: column;
+      filter: drop-shadow(0px 50px 600px black)
+    }
+
+    .menu button {
+      background-color: transparent;
+      border: none;
+    }
+
+    @media (max-width:800px) {
+      body {
+        overflow-x: hidden;
+      }
+
+      .navigation {
+        padding-top: 5%;
+        padding-bottom: 5%;
+      }
+
+      .navigationLinks,
+      .navigation button {
+        display: none;
+      }
+
+      .landingWrapper {
+        flex-direction: column-reverse;
+      }
+
+      .landingWrapperText {
+        width: 90%;
+        align-items: center;
+        margin-top: 20%;
+      }
+
+      .landingWrapperText p:nth-of-type(1) {
+        font-size: 1.8em;
+        width: 90%;
+        text-align: center;
+      }
+
+      .landingWrapperText p:nth-of-type(2) {
+        width: 90%;
+        text-align: justify;
+      }
+
+      .landingWrapper button {
+        width: 60%;
+      }
+
+      .landingWrapperImage {
+        width: 130%;
+        height: 50%;
+        background-position: 10% 90%;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+      }
+
+      .landingWrapperInnerImage {
+        width: 50%;
+        height: 100%;
+        padding-top: -90%;
+        margin-left: -20%;
+        background-position: 130% 90%;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .title {
+        font-size: 1.8em;
+        width: 90%;
+        text-align: center;
+      }
+
+      .wrapperReasons {
+        align-items: center;
+        width: 90%;
+        margin-top: 20%;
+      }
+
+      .wrapperReasons>p:nth-of-type(2) {
+        width: 90%;
+        text-align: center;
+        margin-left: 5%;
+      }
+
+      .reasons {
+        flex-direction: column;
+      }
+
+      .reason {
+        width: 90%;
+        text-align: center;
+        margin-top: 15%;
+      }
+
+      .articles {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .article {
+        width: 90%;
+        margin-bottom: 25%;
+      }
+
+      .article img {
+        height: 40%;
+      }
+
+      .article :not(img) {
+        margin-left: 10%;
+        width: 100%;
+      }
+
+      .article p:nth-of-type(3) {
+        width: 90%;
+      }
+
+      .logos {
+        margin-top: 10%;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+
+      .socials {
+        margin-top: -15%;
+      }
+
+      .footerButtons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-left: 1%;
+        margin-top: 5%;
+        margin-bottom: 10%;
+      }
+
+      .footerButtons div {
+        align-items: center;
+        width: 100%;
+      }
+
+      .openMenu {
+        display: block;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="menu" id="menu">
+    <button>Home</button>
+    <button>About</button>
+    <button>Contact</button>
+    <button>Blog</button>
+    <button>Careers</button>
+
+  </div>
+
+  <div class="navigation">
+    <img src="images\logo.svg">
+    <div class="navigationLinks">
+      <button>Home</button>
+      <button>About</button>
+      <button>Contact</button>
+      <button>Blog</button>
+      <button>Careers</button>
+    </div>
+    <img id='openMen' class='openMenu' onclick="openMenu()" src="images\icon-hamburger.svg">
+    <img id="closeMen" class='closeMenu' onclick="closeMenu()" src="images\icon-close.svg">
+
+    <button class="navigationButton">Request Invite</button>
+  </div>
+
+  <div class="landingWrapper" id="landingWrapper">
+    <div class="landingWrapperText">
+      <p>Next generation digital banking</p>
+      <p> Take your financial life online. Your Easybank account will be a one-stop-shop
+        for spending, saving, budgeting, investing, and much more.</p>
+      <button class="navigationButton">Request Invite</button>
+    </div>
+    <div class="landingWrapperImage">
+      <div class="landingWrapperInnerImage"></div>
+    </div>
+  </div>
+
+  <div class="wrapperReasons">
+    <p class="title">Why choose Easybank?</p>
+    <p>We leverage Open Banking to turn your bank account into your financial hub. Control your finances like never
+      before</p>
+    <div class="reasons">
+      <div class="reason">
+        <img src="images\icon-online.svg">
+
+        <p>Online Banking</p>
+        <p> Our modern web and mobile applications allow you to keep track of your finances
+          wherever you are in the world.</p>
+      </div>
+
+      <div class="reason">
+        <img src="images\icon-budgeting.svg">
+        <p>Simple Budgeting</p>
+        <p> See exactly where your money goes each month. Receive notifications when you’re
+          close to hitting your limits.</p>
+      </div>
+
+      <div class="reason">
+        <img src="images\icon-onboarding.svg">
+        <p>Fast Onboarding</p>
+        <p> We don’t do branches. Open your account in minutes online and start taking control
+          of your finances right away.</p>
+      </div>
+
+      <div class="reason">
+        <img src="images\icon-api.svg">
+        <p>Open API</p>
+        <p> Manage your savings, investments, pension, and much more from one account. Tracking
+          your money has never been easier.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapperArticles">
+    <p class="title">Latest Articles</p>
+    <div class="articles">
+      <div class="article">
+        <img src="images\image-currency.jpg">
+        <p> by Claire Robinson</p>
+        <p> Receive money in any currency with no fees</p>
+        <p>
+          The world is getting smaller and we’re becoming more mobile. So why should you be
+          forced to only receive money in a single …</p>
+      </div>
+
+
+      <div class="article">
+        <img src="images\image-restaurant.jpg">
+        <p>by Wildon Hutten</p>
+        <p>Treat yourself without worrying about money</p>
+        <p>
+
+          Our simple budgeting feature allows you to separate out your spending and set
+          realistic limits each month. That means you …
+        </p>
+      </div>
+
+      <div class="article">
+        <img src="images\image-plane.jpg">
+        <p>by Wilson Hutton</p>
+        <p> Take your Easybank card wherever you go</p>
+        <p>
+
+          We want you to enjoy your travels. This is why we don’t charge any fees on purchases
+          while you’re abroad. We’ll even show you …</p>
+      </div>
+
+
+      <div class="article">
+        <img src="images\image-confetti.jpg">
+        <p> by Claire Robinson</p>
+        <p> Our invite-only Beta accounts are now live!</p>
+        <p>
+          After a lot of hard work by the whole team, we’re excited to launch our closed beta.
+          It’s easy to request an invite through the site ...</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="logos">
+      <img src="images\logo.svg">
+      <div class="socials">
+        <img src="images\icon-facebook.svg">
+        <img src="images\icon-youtube.svg">
+        <img src="images\icon-twitter.svg">
+        <img src="images\icon-pinterest.svg">
+        <img src="images\icon-instagram.svg">
+      </div>
+    </div>
+
+    <div class="footerButtons">
+      <div class="left">
+        <button>About Us</button>
+        <button>Contact</button>
+        <button>Blog</button>
+      </div>
+      <div class="right">
+        <button>Careers</button>
+        <button>Support</button>
+        <button>Privacy Policy</button>
+      </div>
+    </div>
+
+    <div class="footerButton">
+      <button class="navigationButton">Request Invite</button>
+      <p>
+        © Easybank. All Rights Reserved</p>
+    </div>
+  </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Pascu Ioana-Georgia</a>.
+  </div>
+  <script>
+    function openMenu() {
+      openMen.style.display = 'none';
+      closeMen.style.display = 'block';
+
+      menu.style.display = 'flex';
+      menu.style.filter = "drop-shadow(20px 20px 'black')"
+    }
+    function closeMenu() {
+      openMen.style.display = 'block';
+      closeMen.style.display = 'none';
+
+      menu.style.display = 'none';
+    }
+  </script>
+
+</body>
+
+</html>
